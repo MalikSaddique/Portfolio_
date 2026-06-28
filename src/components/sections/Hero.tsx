@@ -1,10 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, ChevronDown } from "lucide-react";
 import { personalInfo } from "@/data/portfolio";
 import ParticleNetwork from "@/components/ui/ParticleNetwork";
+
+const PROFILE_IMAGE = "/Profile-picture/Profile-image.jpg";
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -27,12 +30,12 @@ export default function Hero() {
           } else {
             setIsDeleting(false);
             setRoleIndex(
-              (prev) => (prev + 1) % personalInfo.typewriterRoles.length
+              (prev) => (prev + 1) % personalInfo.typewriterRoles.length,
             );
           }
         }
       },
-      isDeleting ? 50 : 80
+      isDeleting ? 50 : 80,
     );
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex]);
@@ -80,79 +83,118 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-4 text-center">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="section-eyebrow mb-4"
-        >
-          Welcome to my portfolio
-        </motion.p>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.7 }}
-          className="font-heading text-5xl font-bold leading-tight md:text-7xl lg:text-8xl"
-        >
-          <span className="gradient-text">{personalInfo.name}</span>
-        </motion.h1>
-
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-4 lg:grid-cols-[1fr_auto] lg:gap-20 lg:px-8">
+        {/* Profile image — top on mobile, right aside on desktop */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="mt-6 h-8 font-heading text-xl text-accent-cyan md:text-2xl"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.7, ease: "easeOut" }}
+          className="order-first flex justify-center lg:order-last"
         >
-          {displayText}
-          <span className="animate-pulse">|</span>
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
+          >
+            {/* Outer glow ring */}
+            <div className="absolute -inset-1 rounded-full bg-gradient-accent opacity-60 blur-md" />
+            <div className="absolute -inset-px rounded-full bg-gradient-accent" />
+
+            <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-background shadow-glow-lg sm:h-64 sm:w-64 md:h-80 md:w-80 lg:h-96 lg:w-96">
+              <Image
+                src={PROFILE_IMAGE}
+                alt={`${personalInfo.name} — Software Engineer`}
+                fill
+                priority
+                sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
+                className="object-cover object-top"
+              />
+            </div>
+
+            {/* Decorative orbit ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="pointer-events-none absolute -inset-6 rounded-full border border-dashed border-accent-cyan/20"
+              aria-hidden="true"
+            />
+          </motion.div>
         </motion.div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-          className="mx-auto mt-6 max-w-2xl text-lg text-muted md:text-xl"
-        >
-          {personalInfo.heroTagline}
-        </motion.p>
+        <div className="text-center lg:text-left">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="section-eyebrow mb-4"
+          >
+            Welcome to my portfolio
+          </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2 }}
-          className="mt-10 flex flex-wrap items-center justify-center gap-4"
-        >
-          <a href="#projects" className="btn-primary">
-            View Projects
-          </a>
-          <a href="#contact" className="btn-outline">
-            Contact Me
-          </a>
-        </motion.div>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.7 }}
+            className="font-heading text-5xl font-bold leading-tight md:text-7xl lg:text-8xl"
+          >
+            <span className="gradient-text">{personalInfo.name}</span>
+          </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.4 }}
-          className="mt-10 flex items-center justify-center gap-5"
-        >
-          {socialLinks.map(({ icon: Icon, href, label }) => (
-            <motion.a
-              key={label}
-              href={href}
-              target={label !== "Email" ? "_blank" : undefined}
-              rel={label !== "Email" ? "noopener noreferrer" : undefined}
-              aria-label={label}
-              whileHover={{ scale: 1.2, y: -4 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 text-muted transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan hover:shadow-glow-cyan"
-            >
-              <Icon size={20} />
-            </motion.a>
-          ))}
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8 }}
+            className="mt-6 h-8 font-heading text-xl text-accent-cyan md:text-2xl"
+          >
+            {displayText}
+            <span className="animate-pulse">|</span>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            className="mx-auto mt-6 max-w-2xl text-lg text-muted md:text-xl lg:mx-0"
+          >
+            {personalInfo.heroTagline}
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.2 }}
+            className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
+          >
+            <a href="#projects" className="btn-primary">
+              View Projects
+            </a>
+            <a href="#contact" className="btn-outline">
+              Contact Me
+            </a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.4 }}
+            className="mt-10 flex items-center justify-center gap-5 lg:justify-start"
+          >
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <motion.a
+                key={label}
+                href={href}
+                target={label !== "Email" ? "_blank" : undefined}
+                rel={label !== "Email" ? "noopener noreferrer" : undefined}
+                aria-label={label}
+                whileHover={{ scale: 1.2, y: -4 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 text-muted transition-colors hover:border-accent-cyan/50 hover:text-accent-cyan hover:shadow-glow-cyan"
+              >
+                <Icon size={20} />
+              </motion.a>
+            ))}
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
