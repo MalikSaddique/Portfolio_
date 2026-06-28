@@ -27,7 +27,7 @@ export default function Education() {
             </div>
 
             <div className="flex-1">
-              <h3 className="font-heading text-2xl font-bold text-white">
+              <h3 className="font-heading text-2xl font-bold text-foreground">
                 {education.degree}
               </h3>
               <p className="mt-2 text-lg text-accent-cyan">
@@ -48,7 +48,7 @@ export default function Education() {
                 <p className="text-xs uppercase tracking-wider text-muted">
                   CGPA
                 </p>
-                <p className="font-heading text-2xl font-bold text-white">
+                <p className="font-heading text-2xl font-bold text-foreground">
                   {education.cgpa}
                 </p>
               </div>
