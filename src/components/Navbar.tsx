@@ -109,50 +109,50 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <ul className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => {
-              if (link.hasDropdown) {
-                return (
-                  <li
-                    key={link.label}
-                    className="relative"
-                    onMouseEnter={() => setProjectsOpen(true)}
-                    onMouseLeave={() => setProjectsOpen(false)}
-                  >
-                    <a
-                      href={link.href}
-                      className={cn(
-                        "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                        activeSection === "projects"
-                          ? "text-accent-cyan"
-                          : "text-muted hover:text-foreground"
-                      )}
-                    >
-                      {link.label}
-                      <ChevronDown size={14} />
-                    </a>
-                    <AnimatePresence>
-                      {projectsOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          className="absolute left-0 top-full mt-1 w-64 rounded-xl border border-white/10 bg-surface-glass p-2 shadow-glow backdrop-blur-xl"
-                        >
-                          {projects.map((p) => (
-                            <a
-                              key={p.id}
-                              href="#projects"
-                              className="block rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-white/5 hover:text-accent-cyan"
-                              onClick={() => handleNavClick("#projects")}
-                            >
-                              {p.title}
-                            </a>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </li>
-                );
-              }
+              // if (link.hasDropdown) {
+              //   return (
+              //     <li
+              //       key={link.label}
+              //       className="relative"
+              //       onMouseEnter={() => setProjectsOpen(true)}
+              //       onMouseLeave={() => setProjectsOpen(false)}
+              //     >
+              //       <a
+              //         href={link.href}
+              //         className={cn(
+              //           "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              //           activeSection === "projects"
+              //             ? "text-accent-cyan"
+              //             : "text-muted hover:text-foreground"
+              //         )}
+              //       >
+              //         {link.label}
+              //         <ChevronDown size={14} />
+              //       </a>
+              //       <AnimatePresence>
+              //         {projectsOpen && (
+              //           <motion.div
+              //             initial={{ opacity: 0, y: 10 }}
+              //             animate={{ opacity: 1, y: 0 }}
+              //             exit={{ opacity: 0, y: 10 }}
+              //             className="absolute left-0 top-full mt-1 w-64 rounded-xl border border-white/10 bg-surface-glass p-2 shadow-glow backdrop-blur-xl"
+              //           >
+              //             {projects.map((p) => (
+              //               <a
+              //                 key={p.id}
+              //                 href="#projects"
+              //                 className="block rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-white/5 hover:text-accent-cyan"
+              //                 onClick={() => handleNavClick("#projects")}
+              //               >
+              //                 {p.title}
+              //               </a>
+              //             ))}
+              //           </motion.div>
+              //         )}
+              //       </AnimatePresence>
+              //     </li>
+              //   );
+              // }
 
               if (link.hasMoreDropdown) {
                 return (
@@ -167,7 +167,7 @@ export default function Navbar() {
                         "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                         activeSection === "certifications"
                           ? "text-accent-cyan"
-                          : "text-muted hover:text-foreground"
+                          : "text-muted hover:text-foreground",
                       )}
                     >
                       {link.label}
@@ -213,7 +213,7 @@ export default function Navbar() {
                       "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                       activeSection === sectionId
                         ? "text-accent-cyan"
-                        : "text-muted hover:text-foreground"
+                        : "text-muted hover:text-foreground",
                     )}
                   >
                     {link.label}
