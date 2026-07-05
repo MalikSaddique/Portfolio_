@@ -101,7 +101,7 @@ export default function Navbar() {
             >
               {personalInfo.initials}
             </motion.div>
-            <span className="hidden font-heading text-lg font-bold text-white sm:block">
+            <span className="hidden font-heading text-lg font-bold text-foreground sm:block">
               {personalInfo.name.split(" ")[0]}
             </span>
           </a>
@@ -123,7 +123,7 @@ export default function Navbar() {
                         "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                         activeSection === "projects"
                           ? "text-accent-cyan"
-                          : "text-muted hover:text-white"
+                          : "text-muted hover:text-foreground"
                       )}
                     >
                       {link.label}
@@ -167,7 +167,7 @@ export default function Navbar() {
                         "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                         activeSection === "certifications"
                           ? "text-accent-cyan"
-                          : "text-muted hover:text-white"
+                          : "text-muted hover:text-foreground"
                       )}
                     >
                       {link.label}
@@ -213,7 +213,7 @@ export default function Navbar() {
                       "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                       activeSection === sectionId
                         ? "text-accent-cyan"
-                        : "text-muted hover:text-white"
+                        : "text-muted hover:text-foreground"
                     )}
                   >
                     {link.label}
@@ -260,7 +260,7 @@ export default function Navbar() {
             </a>
 
             <button
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-white lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 text-foreground lg:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
@@ -291,7 +291,7 @@ export default function Navbar() {
                   initial="hidden"
                   animate="visible"
                   onClick={() => handleNavClick(link.href)}
-                  className="border-b border-white/5 py-4 font-heading text-2xl font-semibold text-white"
+                  className="border-b border-white/5 py-4 font-heading text-2xl font-semibold text-foreground"
                 >
                   {link.label}
                 </motion.a>

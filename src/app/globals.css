@@ -50,6 +50,10 @@
     @apply rounded-2xl border border-white/10 bg-surface-glass backdrop-blur-xl;
   }
 
+  .light .glass-card {
+    @apply border-slate-200/80 shadow-sm;
+  }
+
   .gradient-text {
     @apply bg-gradient-text bg-clip-text text-transparent;
   }
@@ -59,11 +63,11 @@
   }
 
   .section-title {
-    @apply font-heading text-3xl font-bold text-white md:text-4xl lg:text-5xl;
+    @apply font-heading text-3xl font-bold text-foreground md:text-4xl lg:text-5xl;
   }
 
-  .light .section-title {
-    @apply text-slate-900;
+  .text-heading {
+    @apply text-foreground;
   }
 
   .btn-primary {
@@ -80,6 +84,19 @@
 
   .light .input-field {
     @apply border-slate-200 bg-white focus:border-accent-blue;
+  }
+
+  .light .footer-section,
+  .light .footer-divider {
+    @apply border-slate-200;
+  }
+
+  .light .nav-dropdown {
+    @apply border-slate-200;
+  }
+
+  .light .nav-border {
+    @apply border-slate-200;
   }
 }
 

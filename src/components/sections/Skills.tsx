@@ -69,7 +69,7 @@ export default function Skills() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-blue/10 text-accent-cyan transition-colors group-hover:bg-accent-blue/20">
                     <Icon size={20} />
                   </div>
-                  <h3 className="font-heading text-lg font-semibold text-white">
+                  <h3 className="font-heading text-lg font-semibold text-foreground">
                     {group.category}
                   </h3>
                 </div>

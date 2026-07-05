@@ -125,7 +125,7 @@ export default function Projects() {
                             </span>
                           ))}
                         </div>
-                        <h3 className="font-heading text-2xl font-bold text-white">
+                        <h3 className="font-heading text-2xl font-bold text-foreground">
                           {project.title}
                         </h3>
                         <p className="mt-1 text-sm text-accent-cyan">
@@ -140,7 +140,7 @@ export default function Projects() {
                               flipped === project.id ? null : project.id
                             )
                           }
-                          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-accent-cyan transition-colors hover:text-white"
+                          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-accent-cyan transition-colors hover:text-foreground"
                         >
                           <RotateCcw size={14} />
                           View Details
@@ -155,7 +155,7 @@ export default function Projects() {
                           transform: "rotateY(180deg)",
                         }}
                       >
-                        <h3 className="font-heading text-xl font-bold text-white">
+                        <h3 className="font-heading text-xl font-bold text-foreground">
                           {project.title}
                         </h3>
                         <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">
@@ -163,7 +163,7 @@ export default function Projects() {
                         </p>
                         <button
                           onClick={() => setFlipped(null)}
-                          className="mt-4 text-sm font-medium text-accent-cyan hover:text-white"
+                          className="mt-4 text-sm font-medium text-accent-cyan hover:text-foreground"
                         >
                           ← Back
                         </button>

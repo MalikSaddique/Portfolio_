@@ -101,7 +101,7 @@ export default function Experience() {
                       <span className="text-sm font-medium text-accent-cyan">
                         {item.period}
                       </span>
-                      <h3 className="mt-2 font-heading text-xl font-bold text-white">
+                      <h3 className="mt-2 font-heading text-xl font-bold text-foreground">
                         {item.role}
                       </h3>
                       <p className="text-muted">{item.company}</p>

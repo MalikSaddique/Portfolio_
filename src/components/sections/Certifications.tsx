@@ -51,7 +51,7 @@ export default function Certifications() {
                   <Icon size={24} />
                 </div>
 
-                <h3 className="font-heading text-lg font-semibold text-white">
+                <h3 className="font-heading text-lg font-semibold text-foreground">
                   {cert.title}
                 </h3>
                 <p className="mt-1 text-sm text-accent-cyan">{cert.issuer}</p>

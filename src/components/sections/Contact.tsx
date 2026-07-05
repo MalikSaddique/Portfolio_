@@ -164,12 +164,12 @@ export default function Contact() {
                     {href ? (
                       <a
                         href={href}
-                        className="font-medium text-white transition-colors hover:text-accent-cyan"
+                        className="font-medium text-foreground transition-colors hover:text-accent-cyan"
                       >
                         {value}
                       </a>
                     ) : (
-                      <p className="font-medium text-white">{value}</p>
+                      <p className="font-medium text-foreground">{value}</p>
                     )}
                   </div>
                 </div>
