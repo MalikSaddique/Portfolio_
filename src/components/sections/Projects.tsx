@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, EffectCards } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
 import { projects } from "@/data/portfolio";
@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/effect-cards";
 
 const filters = ["All", "Go", "Full-Stack", "DevOps", "C++"];
 
@@ -27,11 +26,19 @@ export default function Projects() {
       ? projects
       : projects.filter((p) => p.category === activeFilter);
 
+  const handlePrev = useCallback(() => {
+    swiperRef.current?.slidePrev();
+  }, []);
+
+  const handleNext = useCallback(() => {
+    swiperRef.current?.slideNext();
+  }, []);
+
   return (
-    <section id="projects" className="relative py-24 md:py-32">
+    <section id="projects" className="relative py-16 sm:py-24 md:py-32">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-violet/5 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <SectionHeading
           eyebrow="Projects"
           title="Featured Work"
@@ -39,7 +46,7 @@ export default function Projects() {
         />
 
         {/* Filter pills */}
-        <div className="mb-10 flex flex-wrap justify-center gap-3">
+        <div className="mb-8 flex flex-wrap justify-center gap-2 sm:mb-10 sm:gap-3">
           {filters.map((filter) => (
             <motion.button
               key={filter}
@@ -50,7 +57,7 @@ export default function Projects() {
                 setFlipped(null);
               }}
               className={cn(
-                "rounded-full px-5 py-2 text-sm font-medium transition-all",
+                "rounded-full px-4 py-1.5 text-xs font-medium transition-all sm:px-5 sm:py-2 sm:text-sm",
                 activeFilter === filter
                   ? "bg-gradient-accent text-white shadow-glow"
                   : "border border-white/10 text-muted hover:border-accent-cyan/50 hover:text-accent-cyan"
@@ -71,37 +78,32 @@ export default function Projects() {
             className="relative"
           >
             <Swiper
-              modules={[Navigation, Pagination, EffectCards]}
-              effect="cards"
+              modules={[Navigation, Pagination]}
+              spaceBetween={16}
+              slidesPerView={1}
+              centeredSlides={filteredProjects.length === 1}
               grabCursor
               pagination={{ clickable: true }}
               onSwiper={(swiper) => {
                 swiperRef.current = swiper;
               }}
-              className="projects-swiper mx-auto max-w-lg pb-12"
+              className="projects-swiper pb-14"
               breakpoints={{
-                768: {
-                  effect: "slide",
-                  slidesPerView: 1,
-                  spaceBetween: 30,
+                640: {
+                  slidesPerView: Math.min(filteredProjects.length, 2),
+                  spaceBetween: 20,
+                },
+                1024: {
+                  slidesPerView: Math.min(filteredProjects.length, 3),
+                  spaceBetween: 28,
                 },
               }}
             >
               {filteredProjects.map((project) => (
                 <SwiperSlide key={project.id}>
-                  <motion.div
-                    className="perspective-1000 h-[420px] w-full"
+                  <div
+                    className="h-[360px] w-full sm:h-[400px]"
                     style={{ perspective: "1000px" }}
-                    onMouseMove={(e) => {
-                      const rect = e.currentTarget.getBoundingClientRect();
-                      const x = (e.clientX - rect.left) / rect.width - 0.5;
-                      const y = (e.clientY - rect.top) / rect.height - 0.5;
-                      e.currentTarget.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`;
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform =
-                        "rotateY(0deg) rotateX(0deg)";
-                    }}
                   >
                     <div
                       className={cn(
@@ -112,26 +114,26 @@ export default function Projects() {
                     >
                       {/* Front */}
                       <div
-                        className="glass-card absolute inset-0 flex flex-col p-8 backface-hidden"
+                        className="glass-card absolute inset-0 flex flex-col p-5 sm:p-7"
                         style={{ backfaceVisibility: "hidden" }}
                       >
-                        <div className="mb-4 flex flex-wrap gap-2">
+                        <div className="mb-3 flex flex-wrap gap-1.5 sm:mb-4 sm:gap-2">
                           {project.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="rounded-lg bg-accent-blue/10 px-3 py-1 text-xs font-medium text-accent-cyan"
+                              className="rounded-lg bg-accent-blue/10 px-2.5 py-0.5 text-[11px] font-medium text-accent-cyan sm:px-3 sm:py-1 sm:text-xs"
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
-                        <h3 className="font-heading text-2xl font-bold text-foreground">
+                        <h3 className="font-heading text-lg font-bold text-foreground sm:text-xl lg:text-2xl">
                           {project.title}
                         </h3>
-                        <p className="mt-1 text-sm text-accent-cyan">
+                        <p className="mt-1 text-xs text-accent-cyan sm:text-sm">
                           {project.role}
                         </p>
-                        <p className="mt-4 flex-1 text-muted">
+                        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:mt-4">
                           {project.description}
                         </p>
                         <button
@@ -140,7 +142,7 @@ export default function Projects() {
                               flipped === project.id ? null : project.id
                             )
                           }
-                          className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-accent-cyan transition-colors hover:text-foreground"
+                          className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-accent-cyan transition-colors hover:text-foreground sm:mt-4"
                         >
                           <RotateCcw size={14} />
                           View Details
@@ -149,48 +151,50 @@ export default function Projects() {
 
                       {/* Back */}
                       <div
-                        className="glass-card absolute inset-0 flex flex-col p-8"
+                        className="glass-card absolute inset-0 flex flex-col p-5 sm:p-7"
                         style={{
                           backfaceVisibility: "hidden",
                           transform: "rotateY(180deg)",
                         }}
                       >
-                        <h3 className="font-heading text-xl font-bold text-foreground">
+                        <h3 className="font-heading text-lg font-bold text-foreground sm:text-xl">
                           {project.title}
                         </h3>
-                        <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">
+                        <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:mt-4">
                           {project.detail}
                         </p>
                         <button
                           onClick={() => setFlipped(null)}
-                          className="mt-4 text-sm font-medium text-accent-cyan hover:text-foreground"
+                          className="mt-3 text-sm font-medium text-accent-cyan hover:text-foreground sm:mt-4"
                         >
-                          ← Back
+                          &larr; Back
                         </button>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
 
-            {/* Custom navigation */}
-            <div className="mt-4 flex justify-center gap-4">
-              <button
-                onClick={() => swiperRef.current?.slidePrev()}
-                aria-label="Previous project"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-accent-cyan transition-colors hover:border-accent-cyan hover:shadow-glow-cyan"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              <button
-                onClick={() => swiperRef.current?.slideNext()}
-                aria-label="Next project"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-accent-cyan transition-colors hover:border-accent-cyan hover:shadow-glow-cyan"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
+            {/* Custom navigation arrows */}
+            {filteredProjects.length > 1 && (
+              <div className="mt-2 flex justify-center gap-4">
+                <button
+                  onClick={handlePrev}
+                  aria-label="Previous project"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-accent-cyan transition-all hover:border-accent-cyan hover:shadow-glow-cyan active:scale-95"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                <button
+                  onClick={handleNext}
+                  aria-label="Next project"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-accent-cyan transition-all hover:border-accent-cyan hover:shadow-glow-cyan active:scale-95"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>

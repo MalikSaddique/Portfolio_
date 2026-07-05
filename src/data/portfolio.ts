@@ -14,15 +14,14 @@ export const personalInfo = {
     "Backend Engineer",
     "Full-Stack Developer",
     "DevOps Engineer",
-    "Go Developer",
   ],
 };
 
 export const stats = [
-  { label: "Years Experience", value: 1, suffix: "+" },
+  { label: "Years Experience", value: 1.5, suffix: "+" },
   { label: "Projects Completed", value: 6, suffix: "+" },
   { label: "Certifications", value: 4, suffix: "+" },
-  { label: "Tech Stack", value: 0, suffix: "", text: "Go / React / K8s" },
+  { label: "Tech Stack", value: 0, suffix: "", text: "Go / React / K8s / AWS" },
 ];
 
 export const skills = [
@@ -189,17 +188,17 @@ export const projects = [
     detail:
       "Optimized for large file processing with concurrent goroutine workers and memory-efficient streaming.",
   },
-  {
-    id: "banking",
-    title: "Banking Management System",
-    role: "C++",
-    category: "C++",
-    tags: ["C++", "OOP", "Console"],
-    description:
-      "Console-based banking system with account management, transaction history, and user interaction features.",
-    detail:
-      "Object-oriented design with account management, transaction logging, and interactive CLI interface.",
-  },
+  // {
+  //   id: "banking",
+  //   title: "Banking Management System",
+  //   role: "C++",
+  //   category: "C++",
+  //   tags: ["C++", "OOP", "Console"],
+  //   description:
+  //     "Console-based banking system with account management, transaction history, and user interaction features.",
+  //   detail:
+  //     "Object-oriented design with account management, transaction logging, and interactive CLI interface.",
+  // },
 ];
 
 export const education = {

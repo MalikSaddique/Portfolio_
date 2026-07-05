@@ -47,8 +47,8 @@ export default function Experience() {
   }, []);
 
   return (
-    <section id="experience" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-5xl px-4 md:px-8">
+    <section id="experience" className="relative py-16 sm:py-24 md:py-32">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 md:px-8">
         <SectionHeading
           eyebrow="Experience"
           title="Professional Journey"
@@ -96,7 +96,7 @@ export default function Experience() {
                   >
                     <motion.div
                       whileHover={{ scale: 1.02 }}
-                      className="glass-card p-6 md:p-8"
+                      className="glass-card p-5 sm:p-6 md:p-8"
                     >
                       <span className="text-sm font-medium text-accent-cyan">
                         {item.period}

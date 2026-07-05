@@ -7,8 +7,8 @@ import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function Education() {
   return (
-    <section id="education" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-3xl px-4 md:px-8">
+    <section id="education" className="relative py-16 sm:py-24 md:py-32">
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 md:px-8">
         <SectionHeading eyebrow="Education" title="Academic Background" />
 
         <motion.div
@@ -17,7 +17,7 @@ export default function Education() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
           whileHover={{ y: -4 }}
-          className="glass-card relative overflow-hidden p-8 md:p-10"
+          className="glass-card relative overflow-hidden p-6 sm:p-8 md:p-10"
         >
           <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-accent-blue/10 blur-2xl" />
 
@@ -27,7 +27,7 @@ export default function Education() {
             </div>
 
             <div className="flex-1">
-              <h3 className="font-heading text-2xl font-bold text-foreground">
+              <h3 className="font-heading text-xl font-bold text-foreground sm:text-2xl">
                 {education.degree}
               </h3>
               <p className="mt-2 text-lg text-accent-cyan">

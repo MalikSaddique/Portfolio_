@@ -53,7 +53,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden pt-20"
+      className="relative flex min-h-[100dvh] items-center justify-center overflow-hidden px-4 pt-20 sm:px-6 md:px-8"
     >
       {/* Background */}
       <div className="absolute inset-0">
@@ -83,7 +83,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 px-4 lg:grid-cols-[1fr_auto] lg:gap-20 lg:px-8">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-8 sm:gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
         {/* Profile image — top on mobile, right aside on desktop */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -100,14 +100,15 @@ export default function Hero() {
             <div className="absolute -inset-1 rounded-full bg-gradient-accent opacity-60 blur-md" />
             <div className="absolute -inset-px rounded-full bg-gradient-accent" />
 
-            <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-background shadow-glow-lg sm:h-64 sm:w-64 md:h-80 md:w-80 lg:h-96 lg:w-96">
+            <div className="relative h-48 w-48 overflow-hidden rounded-full border-4 border-background shadow-glow-lg sm:h-56 sm:w-56 md:h-72 md:w-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96">
               <Image
                 src={PROFILE_IMAGE}
                 alt={`${personalInfo.name} — Software Engineer`}
                 fill
                 priority
-                sizes="(max-width: 640px) 224px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
-                className="object-cover object-top"
+                sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, (max-width: 1024px) 288px, 384px"
+                className="scale-110 object-cover"
+                style={{ objectPosition: "center 20%" }}
               />
             </div>
 
@@ -115,7 +116,7 @@ export default function Hero() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-              className="pointer-events-none absolute -inset-6 rounded-full border border-dashed border-accent-cyan/20"
+              className="pointer-events-none absolute -inset-4 rounded-full border border-dashed border-accent-cyan/20 sm:-inset-6"
               aria-hidden="true"
             />
           </motion.div>
@@ -135,7 +136,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.7 }}
-            className="font-heading text-5xl font-bold leading-tight md:text-7xl lg:text-8xl"
+            className="font-heading text-4xl font-bold leading-tight sm:text-5xl md:text-7xl lg:text-8xl"
           >
             <span className="gradient-text">{personalInfo.name}</span>
           </motion.h1>
@@ -144,7 +145,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="mt-6 h-8 font-heading text-xl text-accent-cyan md:text-2xl"
+            className="mt-4 h-8 font-heading text-lg text-accent-cyan sm:mt-6 sm:text-xl md:text-2xl"
           >
             {displayText}
             <span className="animate-pulse">|</span>
@@ -154,7 +155,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="mx-auto mt-6 max-w-2xl text-lg text-muted md:text-xl lg:mx-0"
+            className="mx-auto mt-4 max-w-2xl text-base text-muted sm:mt-6 sm:text-lg md:text-xl lg:mx-0"
           >
             {personalInfo.heroTagline}
           </motion.p>
@@ -163,7 +164,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2 }}
-            className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
+            className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:mt-10 sm:gap-4 lg:justify-start"
           >
             <a href="#projects" className="btn-primary">
               View Projects
@@ -177,7 +178,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4 }}
-            className="mt-10 flex items-center justify-center gap-5 lg:justify-start"
+            className="mt-6 flex items-center justify-center gap-4 sm:mt-10 sm:gap-5 lg:justify-start"
           >
             {socialLinks.map(({ icon: Icon, href, label }) => (
               <motion.a

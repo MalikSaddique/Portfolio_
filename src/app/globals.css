@@ -63,7 +63,7 @@
   }
 
   .section-title {
-    @apply font-heading text-3xl font-bold text-foreground md:text-4xl lg:text-5xl;
+    @apply font-heading text-2xl font-bold text-foreground sm:text-3xl md:text-4xl lg:text-5xl;
   }
 
   .text-heading {
@@ -71,11 +71,11 @@
   }
 
   .btn-primary {
-    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-accent px-6 py-3 font-semibold text-white shadow-glow transition-all duration-300 hover:scale-105 hover:shadow-glow-lg;
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-gradient-accent px-5 py-2.5 text-sm font-semibold text-white shadow-glow transition-all duration-300 hover:scale-105 hover:shadow-glow-lg sm:px-6 sm:py-3 sm:text-base;
   }
 
   .btn-outline {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-xl border border-accent-blue/50 bg-transparent px-6 py-3 font-semibold text-accent-cyan transition-all duration-300 hover:scale-105 hover:border-accent-cyan hover:shadow-glow-cyan;
+    @apply relative inline-flex items-center justify-center gap-2 rounded-xl border border-accent-blue/50 bg-transparent px-5 py-2.5 text-sm font-semibold text-accent-cyan transition-all duration-300 hover:scale-105 hover:border-accent-cyan hover:shadow-glow-cyan sm:px-6 sm:py-3 sm:text-base;
   }
 
   .input-field {

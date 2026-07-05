@@ -87,7 +87,7 @@ export default function Navbar() {
         )}
       >
         <nav
-          className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:py-4 md:px-8"
           aria-label="Main navigation"
         >
           <a
@@ -281,7 +281,7 @@ export default function Navbar() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-40 flex flex-col bg-background/98 backdrop-blur-xl lg:hidden"
           >
-            <div className="flex flex-1 flex-col justify-center px-8 pt-20">
+            <div className="flex flex-1 flex-col justify-center px-6 pt-20 sm:px-8">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
@@ -291,7 +291,7 @@ export default function Navbar() {
                   initial="hidden"
                   animate="visible"
                   onClick={() => handleNavClick(link.href)}
-                  className="border-b border-white/5 py-4 font-heading text-2xl font-semibold text-foreground"
+                  className="border-b border-white/5 py-3 font-heading text-xl font-semibold text-foreground sm:py-4 sm:text-2xl"
                 >
                   {link.label}
                 </motion.a>

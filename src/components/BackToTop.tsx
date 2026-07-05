@@ -30,7 +30,7 @@ export default function BackToTop() {
           whileTap={{ scale: 0.95 }}
           onClick={scrollToTop}
           aria-label="Back to top"
-          className="fixed bottom-8 right-8 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-accent text-white shadow-glow-lg"
+          className="fixed bottom-4 right-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-accent text-white shadow-glow-lg sm:bottom-8 sm:right-8 sm:h-12 sm:w-12"
         >
           <ChevronUp size={22} />
         </motion.button>

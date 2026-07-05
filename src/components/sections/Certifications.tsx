@@ -18,10 +18,10 @@ export default function Certifications() {
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
-    <section id="certifications" className="relative py-24 md:py-32">
+    <section id="certifications" className="relative py-16 sm:py-24 md:py-32">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent-blue/5 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <SectionHeading
           eyebrow="Achievements"
           title="Certifications & Competitions"
