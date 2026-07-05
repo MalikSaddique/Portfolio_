@@ -14,15 +14,14 @@ export const personalInfo = {
     "Backend Engineer",
     "Full-Stack Developer",
     "DevOps Engineer",
-    "Go Developer",
   ],
 };
 
 export const stats = [
-  { label: "Years Experience", value: 1, suffix: "+" },
+  { label: "Years Experience", value: 1.5, suffix: "+" },
   { label: "Projects Completed", value: 6, suffix: "+" },
   { label: "Certifications", value: 4, suffix: "+" },
-  { label: "Tech Stack", value: 0, suffix: "", text: "Go / React / K8s" },
+  { label: "Tech Stack", value: 0, suffix: "", text: "Go / React / K8s / AWS" },
 ];
 
 export const skills = [
@@ -144,6 +143,7 @@ export const projects = [
       "A web-based platform to track live gold rates. Complete backend setup, real-time API development, deployment using Docker and Kubernetes.",
     detail:
       "Led end-to-end development of a real-time gold rate tracking platform with secure REST APIs, database management, and production deployment on Kubernetes.",
+    github: "https://orotracker.com/",
   },
   {
     id: "skylink",
@@ -155,6 +155,7 @@ export const projects = [
       "Full-stack call management and lead automation platform for real estate companies with telephony infrastructure and CRM integrations.",
     detail:
       "Built telephony infrastructure with FreeSWITCH and SIP Trunk for real-time, high-volume call routing/recording. Integrated WhatsApp, Mailchimp, ElevenLabs (AI voice), OpenAI, TikTok, Facebook, and Bitrix CRM.",
+    github: "", 
   },
   {
     id: "mailavail",
@@ -166,6 +167,7 @@ export const projects = [
       "Designed deployment specs and Kubernetes manifests for a distributed email outbound verification system.",
     detail:
       "Queue-based processing and CI/CD integration for automated rollout of a distributed email verification system.",
+    github: "", 
   },
   {
     id: "chat-app",
@@ -177,6 +179,7 @@ export const projects = [
       "WebSocket-based real-time chatroom with concurrent messaging support, showcasing Go's concurrency model.",
     detail:
       "Demonstrates goroutines, channels, and WebSocket handling for real-time bidirectional communication.",
+    github: "https://github.com/MalikSaddique/chat_application_go",
   },
   {
     id: "file-analyzer",
@@ -188,17 +191,7 @@ export const projects = [
       "Command-line app to parse and analyze large files efficiently using goroutines and memory optimization.",
     detail:
       "Optimized for large file processing with concurrent goroutine workers and memory-efficient streaming.",
-  },
-  {
-    id: "banking",
-    title: "Banking Management System",
-    role: "C++",
-    category: "C++",
-    tags: ["C++", "OOP", "Console"],
-    description:
-      "Console-based banking system with account management, transaction history, and user interaction features.",
-    detail:
-      "Object-oriented design with account management, transaction logging, and interactive CLI interface.",
+    github: "https://github.com/MalikSaddique/go_learning", 
   },
 ];
 

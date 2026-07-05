@@ -87,7 +87,7 @@ export default function Navbar() {
         )}
       >
         <nav
-          className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8"
+          className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:py-4 md:px-8"
           aria-label="Main navigation"
         >
           <a
@@ -109,50 +109,50 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <ul className="hidden items-center gap-1 lg:flex">
             {navLinks.map((link) => {
-              if (link.hasDropdown) {
-                return (
-                  <li
-                    key={link.label}
-                    className="relative"
-                    onMouseEnter={() => setProjectsOpen(true)}
-                    onMouseLeave={() => setProjectsOpen(false)}
-                  >
-                    <a
-                      href={link.href}
-                      className={cn(
-                        "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
-                        activeSection === "projects"
-                          ? "text-accent-cyan"
-                          : "text-muted hover:text-foreground"
-                      )}
-                    >
-                      {link.label}
-                      <ChevronDown size={14} />
-                    </a>
-                    <AnimatePresence>
-                      {projectsOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          className="absolute left-0 top-full mt-1 w-64 rounded-xl border border-white/10 bg-surface-glass p-2 shadow-glow backdrop-blur-xl"
-                        >
-                          {projects.map((p) => (
-                            <a
-                              key={p.id}
-                              href="#projects"
-                              className="block rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-white/5 hover:text-accent-cyan"
-                              onClick={() => handleNavClick("#projects")}
-                            >
-                              {p.title}
-                            </a>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </li>
-                );
-              }
+              // if (link.hasDropdown) {
+              //   return (
+              //     <li
+              //       key={link.label}
+              //       className="relative"
+              //       onMouseEnter={() => setProjectsOpen(true)}
+              //       onMouseLeave={() => setProjectsOpen(false)}
+              //     >
+              //       <a
+              //         href={link.href}
+              //         className={cn(
+              //           "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+              //           activeSection === "projects"
+              //             ? "text-accent-cyan"
+              //             : "text-muted hover:text-foreground"
+              //         )}
+              //       >
+              //         {link.label}
+              //         <ChevronDown size={14} />
+              //       </a>
+              //       <AnimatePresence>
+              //         {projectsOpen && (
+              //           <motion.div
+              //             initial={{ opacity: 0, y: 10 }}
+              //             animate={{ opacity: 1, y: 0 }}
+              //             exit={{ opacity: 0, y: 10 }}
+              //             className="absolute left-0 top-full mt-1 w-64 rounded-xl border border-white/10 bg-surface-glass p-2 shadow-glow backdrop-blur-xl"
+              //           >
+              //             {projects.map((p) => (
+              //               <a
+              //                 key={p.id}
+              //                 href="#projects"
+              //                 className="block rounded-lg px-3 py-2 text-sm text-muted transition-colors hover:bg-white/5 hover:text-accent-cyan"
+              //                 onClick={() => handleNavClick("#projects")}
+              //               >
+              //                 {p.title}
+              //               </a>
+              //             ))}
+              //           </motion.div>
+              //         )}
+              //       </AnimatePresence>
+              //     </li>
+              //   );
+              // }
 
               if (link.hasMoreDropdown) {
                 return (
@@ -167,7 +167,7 @@ export default function Navbar() {
                         "flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                         activeSection === "certifications"
                           ? "text-accent-cyan"
-                          : "text-muted hover:text-foreground"
+                          : "text-muted hover:text-foreground",
                       )}
                     >
                       {link.label}
@@ -213,7 +213,7 @@ export default function Navbar() {
                       "relative rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                       activeSection === sectionId
                         ? "text-accent-cyan"
-                        : "text-muted hover:text-foreground"
+                        : "text-muted hover:text-foreground",
                     )}
                   >
                     {link.label}
@@ -281,7 +281,7 @@ export default function Navbar() {
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
             className="fixed inset-0 z-40 flex flex-col bg-background/98 backdrop-blur-xl lg:hidden"
           >
-            <div className="flex flex-1 flex-col justify-center px-8 pt-20">
+            <div className="flex flex-1 flex-col justify-center px-6 pt-20 sm:px-8">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.label}
@@ -291,7 +291,7 @@ export default function Navbar() {
                   initial="hidden"
                   animate="visible"
                   onClick={() => handleNavClick(link.href)}
-                  className="border-b border-white/5 py-4 font-heading text-2xl font-semibold text-foreground"
+                  className="border-b border-white/5 py-3 font-heading text-xl font-semibold text-foreground sm:py-4 sm:text-2xl"
                 >
                   {link.label}
                 </motion.a>

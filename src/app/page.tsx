@@ -14,11 +14,11 @@ import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   return (
-    <>
+    <div className="w-full overflow-x-hidden">
       <LoadingScreen />
       <SmoothScroll />
       <Navbar />
-      <main>
+      <main className="w-full overflow-x-hidden">
         <Hero />
         <About />
         <Skills />
@@ -30,6 +30,6 @@ export default function Home() {
       </main>
       <Footer />
       <BackToTop />
-    </>
+    </div>
   );
 }

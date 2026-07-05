@@ -7,8 +7,8 @@ import Counter from "@/components/ui/Counter";
 
 export default function About() {
   return (
-    <section id="about" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section id="about" className="relative py-16 sm:py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <SectionHeading eyebrow="About Me" title="Building Reliable Systems" />
 
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">

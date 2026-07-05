@@ -63,8 +63,8 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+    <section id="contact" className="relative py-16 sm:py-24 md:py-32">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8">
         <SectionHeading
           eyebrow="Contact"
           title="Let's Connect"
@@ -79,7 +79,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             onSubmit={handleSubmit}
-            className="glass-card space-y-6 p-8"
+            className="glass-card space-y-5 p-5 sm:space-y-6 sm:p-8"
           >
             {(["name", "email", "message"] as const).map((field) => (
               <div key={field} className="relative">
