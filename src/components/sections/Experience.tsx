@@ -56,8 +56,8 @@ export default function Experience() {
         />
 
         <div ref={timelineRef} className="relative">
-          {/* Animated timeline line */}
-          <div className="absolute left-4 top-0 h-full w-0.5 origin-top bg-white/10 md:left-1/2 md:-translate-x-1/2">
+          {/* Animated timeline line - hidden on mobile */}
+          <div className="absolute left-1/2 top-0 hidden h-full w-0.5 origin-top -translate-x-1/2 bg-white/10 md:block">
             <div
               ref={lineRef}
               className="h-full w-full origin-top bg-gradient-accent"
@@ -65,7 +65,7 @@ export default function Experience() {
             />
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-6 md:space-y-12">
             {experience.map((item, i) => {
               const Icon = iconMap[item.icon] || Briefcase;
               const isLeft = i % 2 === 0;
@@ -81,8 +81,8 @@ export default function Experience() {
                     isLeft ? "md:flex-row-reverse" : ""
                   }`}
                 >
-                  {/* Timeline dot */}
-                  <div className="absolute left-4 z-10 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border-2 border-accent-cyan bg-background md:left-1/2">
+                  {/* Timeline dot - hidden on mobile */}
+                  <div className="absolute left-1/2 z-10 hidden h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full border-2 border-accent-cyan bg-background md:flex">
                     <Icon size={14} className="text-accent-cyan" />
                   </div>
 
@@ -90,7 +90,7 @@ export default function Experience() {
                   <div className="hidden w-1/2 md:block" />
 
                   <div
-                    className={`ml-12 w-full md:ml-0 md:w-1/2 ${
+                    className={`w-full md:w-1/2 ${
                       isLeft ? "md:pr-12" : "md:pl-12"
                     }`}
                   >
@@ -98,15 +98,24 @@ export default function Experience() {
                       whileHover={{ scale: 1.02 }}
                       className="glass-card p-5 sm:p-6 md:p-8"
                     >
-                      <span className="text-sm font-medium text-accent-cyan">
+                      {/* Mobile icon badge */}
+                      <div className="mb-3 flex items-center gap-3 md:hidden">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-accent-cyan bg-background">
+                          <Icon size={14} className="text-accent-cyan" />
+                        </div>
+                        <span className="text-sm font-medium text-accent-cyan">
+                          {item.period}
+                        </span>
+                      </div>
+                      <span className="hidden text-sm font-medium text-accent-cyan md:block">
                         {item.period}
                       </span>
-                      <h3 className="mt-2 font-heading text-xl font-bold text-foreground">
+                      <h3 className="mt-1 font-heading text-lg font-bold text-foreground sm:text-xl md:mt-2">
                         {item.role}
                       </h3>
-                      <p className="text-muted">{item.company}</p>
+                      <p className="text-sm text-muted sm:text-base">{item.company}</p>
 
-                      <ul className="mt-4 space-y-3">
+                      <ul className="mt-3 space-y-2 sm:mt-4 sm:space-y-3">
                         {item.highlights.map((highlight, j) => (
                           <motion.li
                             key={j}
@@ -114,7 +123,7 @@ export default function Experience() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: j * 0.08 }}
-                            className="flex gap-3 text-sm leading-relaxed text-muted"
+                            className="flex gap-2 text-xs leading-relaxed text-muted sm:gap-3 sm:text-sm"
                           >
                             <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-cyan" />
                             {highlight}

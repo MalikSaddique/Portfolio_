@@ -60,16 +60,16 @@ export default function Hero() {
         <ParticleNetwork className="absolute inset-0 h-full w-full opacity-60" />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
 
-        {/* Gradient blobs */}
+        {/* Gradient blobs - hidden on mobile to prevent overflow */}
         <motion.div
           animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -left-32 top-1/4 h-96 w-96 rounded-full bg-accent-blue/20 blur-[120px]"
+          className="absolute left-0 top-1/4 hidden h-64 w-64 -translate-x-1/2 rounded-full bg-accent-blue/20 blur-[120px] sm:block sm:h-96 sm:w-96"
         />
         <motion.div
           animate={{ x: [0, -40, 0], y: [0, 30, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -right-32 top-1/3 h-80 w-80 rounded-full bg-accent-violet/20 blur-[100px]"
+          className="absolute right-0 top-1/3 hidden h-64 w-64 translate-x-1/2 rounded-full bg-accent-violet/20 blur-[100px] sm:block sm:h-80 sm:w-80"
         />
 
         {/* Grid pattern */}

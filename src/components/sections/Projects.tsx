@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react";
+import { ChevronLeft, ChevronRight, RotateCcw, ExternalLink } from "lucide-react";
 import { projects } from "@/data/portfolio";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { cn } from "@/lib/utils";
@@ -136,17 +136,30 @@ export default function Projects() {
                         <p className="mt-3 flex-1 text-sm leading-relaxed text-muted sm:mt-4">
                           {project.description}
                         </p>
-                        <button
-                          onClick={() =>
-                            setFlipped(
-                              flipped === project.id ? null : project.id
-                            )
-                          }
-                          className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-accent-cyan transition-colors hover:text-foreground sm:mt-4"
-                        >
-                          <RotateCcw size={14} />
-                          View Details
-                        </button>
+                        <div className="mt-3 flex flex-wrap items-center gap-3 sm:mt-4 sm:gap-4">
+                          <button
+                            onClick={() =>
+                              setFlipped(
+                                flipped === project.id ? null : project.id
+                              )
+                            }
+                            className="inline-flex items-center gap-2 text-sm font-medium text-accent-cyan transition-colors hover:text-foreground"
+                          >
+                            <RotateCcw size={14} />
+                            View Details
+                          </button>
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 rounded-lg bg-accent-blue/10 px-3 py-1.5 text-sm font-medium text-accent-cyan transition-colors hover:bg-accent-blue/20 hover:text-foreground"
+                            >
+                              <ExternalLink size={14} />
+                              Visit
+                            </a>
+                          )}
+                        </div>
                       </div>
 
                       {/* Back */}
